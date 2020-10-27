@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 import java.sql.ResultSet;
 
 import interfaces.IPlayer;
@@ -87,12 +86,13 @@ public class DaoPlayerImp implements IPlayer{
 		DaoPlayerImp imp = new DaoPlayerImp();
 		DaoFactionsImp imp2 = new DaoFactionsImp();
 		
-		int faccion_id=1;
+		/*int faccion_id=1;
 		imp.getAllknights("Select * from Player where faccion_id = "+ faccion_id);
 		
-		System.out.println("============================================");
+		System.out.println("============================================");*/
 		
-		/*int faccion_id2 = imp2.getFaction_id("Samurais");
-		System.out.println(imp.getSamuraiWithMoreAttack("select * from Player where ataque = (select MAX(ataque) from Player where faccion_id ="+faccion_id2 , faccion_id2));*/
+		int faccion_id2 = imp2.getFaction_id("Samurais");
+		String query ="select * from Player where ataque = (select MAX(ataque) from Player where faccion_id = "+faccion_id2;
+		System.out.println(imp.getSamuraiWithMoreAttack(query , faccion_id2));
 	}
 }

@@ -61,11 +61,4 @@ public class DaoFactionsImp implements IFaction{
 			e.printStackTrace();
 		}
 	}
-	public static void main(String[] args) {
-		DaoPlayerImp imp =  new DaoPlayerImp();
-		DaoFactionsImp imp2 = new DaoFactionsImp();
-		
-		int faccion_id2 = imp2.getFaction_id("Samurais");
-		System.out.println(imp.getSamuraiWithMoreAttack("select * from Player where ataque = (select MAX(ataque) from Player where faccion_id = "+faccion_id2,faccion_id2));
-	}
 }
