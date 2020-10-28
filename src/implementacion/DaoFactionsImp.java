@@ -11,8 +11,8 @@ import interfaces.IFaction;
 public class DaoFactionsImp implements IFaction{
 	private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String url = "jdbc:mysql://localhost:3306/ForHonor?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private static final String user = "root";
-    private static final String pass = "";
+    private static final String user = "User3";
+    private static final String pass = "456";
 	private Connection conn =null;
 	
 	
@@ -42,7 +42,7 @@ public class DaoFactionsImp implements IFaction{
 		ResultSet rs = null;
 		try {
 			Statement st= conn.createStatement();
-			rs = st.executeQuery("select faccion_id from Factions where nombre_faccion = "+faction_name);
+			rs = st.executeQuery("select faccion_id from Factions where nombre_faccion = "+ "'" + faction_name + "'");
 			
 			while(rs.next()) {
 				id = rs.getInt(1);

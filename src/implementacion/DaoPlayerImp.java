@@ -12,8 +12,8 @@ import modelos.Player;
 public class DaoPlayerImp implements IPlayer{
 	private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String url = "jdbc:mysql://localhost:3306/ForHonor?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private static final String user = "root";
-    private static final String pass = "";
+    private static final String user = "User3";
+    private static final String pass = "456";
 	private Connection conn =null;
 	
     @Override
