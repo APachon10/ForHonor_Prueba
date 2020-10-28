@@ -80,6 +80,27 @@ public class DaoPlayerImp implements IPlayer{
 			e.printStackTrace();
 		}
 	}
+	@Override
+	public Player getAllInfo(String query) {
+		LogIn(user,url,pass);
+		Player p = null;
+		ResultSet rs = null;
+		try {
+			Statement st = conn.createStatement();
+			rs = st.executeQuery(query);			
+			while(rs.next()) {
+				p.setPlayer_id(rs.getInt(1));
+				p.setPlayer_name(rs.getString(2));
+				p.setAttack(rs.getInt(3));
+				p.setDefense(rs.getInt(5));
+				p.setFaction_id(rs.getInt(6));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		logOut();
+		return p;
+	}
 	public static void main(String[] args) {
 		DaoPlayerImp imp = new DaoPlayerImp();
 		DaoFactionsImp imp2 = new DaoFactionsImp();
@@ -90,10 +111,13 @@ public class DaoPlayerImp implements IPlayer{
 		System.out.println("============================================");
 
 		int faccion_id2 = imp2.getFaction_id("Samurais");
-		//System.out.println("Faccion_id: " +faccion_id2);
-		String query ="select * from Player where ataque = (select MAX(ataque) from Player where faccion_id = "+faccion_id2+")";
+		//System.out.println("Faccion_id: " +faccion_id2)
+		Player p = imp.getAllInfo("Select * from Player where nombre_personaje = 'Orochi'");
+		System.out.println(p.toString());
+		//String query ="select * from Player where ataque = (select MAX(ataque) from Player where faccion_id = "+faccion_id2+")";
 		//System.out.println("Query : "+ query);
-		System.out.println(imp.getSamuraiWithMoreAttack(query , faccion_id2));
+		//System.out.println(imp.getSamuraiWithMoreAttack(query , faccion_id2));
 	}
+	
 	
 }
