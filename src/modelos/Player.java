@@ -6,6 +6,11 @@ public class Player {
 	private int attack;
 	private int defense;
 	private int faction_id;
+	
+	
+	public Player() {
+		super();
+	}
 	//Getters
 	public int getPlayer_id() {
 		return player_id;

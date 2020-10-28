@@ -17,8 +17,8 @@ public class DaoFactionsImp implements IFaction{
 	
 	
 	@Override
-	public void LogIn(String db_name, String url, String db_pass) {
-		System.out.println("Hello : " +conn);
+	public void LogIn(String url, String user, String pass) {
+		//System.out.println("Hello : " +conn);
 		try {
             Class.forName(driver);
             conn = DriverManager.getConnection(url, user, pass);
@@ -32,7 +32,7 @@ public class DaoFactionsImp implements IFaction{
             System.out.println("Error en la conexión");
             e.printStackTrace();
         }
-		System.out.println("Bye:" +conn);
+		//System.out.println("Bye:" +conn);
 	}
 
 	@Override
