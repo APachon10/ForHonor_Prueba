@@ -113,9 +113,8 @@ public class DaoPlayerImp implements IPlayer{
 
 		int faccion_id2 = imp2.getFaction_id("Samurais");
 		//System.out.println("Faccion_id: " +faccion_id2);
-		Player p = imp.getAllInfo("Select * from Player where nombre_personaje = 'Orochi'");
-		System.out.println(p.toString());
-		//System.out.println(imp.getSamuraiWithMoreAttack(query , faccion_id2));
+		String query = "Select * from Player where ataque=(select MAX(ataque) from Player where faccion_id = "+faccion_id2+")";
+		System.out.println(imp.getSamuraiWithMoreAttack(query , faccion_id2));
 	}
 	
 	
